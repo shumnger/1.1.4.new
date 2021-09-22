@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args)  {
-        // реализуйте алгоритм здесь
+        //* реализуйте алгоритм здесь
         UserService userService = new UserServiceImpl();
 
         User user1 = new User("Svetlana", "Petrova", (byte)19);
@@ -26,8 +26,6 @@ public class Main {
         allUsers.forEach(System.out::println);
         userService.cleanUsersTable();
         userService.dropUsersTable();
-
-
     }
 }
 
