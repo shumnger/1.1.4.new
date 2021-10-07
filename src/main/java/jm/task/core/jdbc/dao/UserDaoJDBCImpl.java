@@ -18,8 +18,8 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
 
     @Override
     public void createUsersTable() {
-        String sql = "CREATE TABLE IF NOT EXISTS USERS (id BIGINT NOT NULL AUTO_INCREMENT, " +
-                "name VARCHAR(45), LastName VARCHAR(45), age SMALLINT NOT NULL, PRIMARY KEY (id))";
+        String sql = "CREATE TABLE IF NOT EXISTS USERS  (id BIGINT NOT NULL AUTO_INCREMENT, " +
+                "name VARCHAR (45), LastName VARCHAR(45), age SMALLINT NOT NULL, PRIMARY KEY (id))";
 
         try (PreparedStatement pst = connection.prepareStatement(sql)) {
             pst.executeUpdate(sql);
@@ -32,7 +32,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
     @Override
     public void dropUsersTable() {
         try (Statement statement = connection.createStatement()) {
-            statement.execute("DROP TABLE USERS");
+            statement.execute("DROP TABLE IF EXISTS USERS");
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -98,7 +98,7 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
         @Override
         public void cleanUsersTable () {
             try (Statement statement = connection.createStatement()) {
-                statement.execute("Truncate USERS");
+                statement.execute("TRUNCATE TABLE USERS");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
